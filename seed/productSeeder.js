@@ -1,5 +1,3 @@
-'use strict'
-
 const { Product, Category } = require('../models')
 const faker = require('faker')
 
