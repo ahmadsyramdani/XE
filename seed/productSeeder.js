@@ -3,16 +3,15 @@ const faker = require('faker')
 
 const forSeed = async _ => {
   console.log('Start')
-  console.log("Delete Category & Product")
-
-  await Category.destroy({
-    truncate: true
-  })
-
-  await Product.destroy({
-    truncate: true
-  })
-
+  if (process.env.NODE_ENV === 'development') {
+    console.log("Delete Category & Product")
+    await Category.destroy({
+      truncate: true
+    })
+    await Product.destroy({
+      truncate: true
+    })
+  }
   for (let index = 0; index < 5; index++) {
     const category = await Category.create({
       name: faker.commerce.product()
