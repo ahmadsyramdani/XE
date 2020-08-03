@@ -1,5 +1,19 @@
 require('dotenv').config()
 
+//for HEROKU
+const Sequelize = require('sequelize')
+var database = process.env.DATABASE_URL || 'campeonatodb'
+var sequelize = ""
+
+if (process.env.DATABASE_URL) {
+  sequelize = new Sequelize(database)
+}
+else {
+  sequelize = new Sequelize(database, 'postgres', '', {
+    dialect: 'postgres'
+  });
+}
+
 const postgres = {
   auth: {
     secret: process.env.DBSECRET
