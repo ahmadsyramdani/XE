@@ -1,5 +1,17 @@
 require('dotenv').config()
 
+const Sequelize = require('sequelize')
+const database = process.env.DATABASE_URL || process.env.DBNAME
+const sequelize = ""
+
+if (process.env.DATABASE_URL) {
+  new Sequelize(database)
+} else {
+  new Sequelize(database, 'postgres', '', {
+    dialect: 'postgres'
+  })
+}
+
 const postgres = {
   auth: {
     secret: process.env.DBSECRET
