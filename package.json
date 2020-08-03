@@ -61,6 +61,9 @@
     "githubtoken": "git config --global url.\"https://${TOKEN}:@github.com/\".insteadOf \"https://github.com/\"",
     "buildexe": "nexe bin/www -r \"./.sequelizerc\" -r \"./app.js\" -r \"./public/\" -r \"./models/\" -r \"./.env\" -r \"./views/\" -r \"./config/\" --verbose"
   },
+  "engines": {
+    "node": "10.16.0"
+  },
   "author": "Ahmad Ramdani",
   "license": "ISC"
 }
