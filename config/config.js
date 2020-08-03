@@ -2,7 +2,7 @@ require('dotenv').config()
 
 //for HEROKU
 const Sequelize = require('sequelize')
-var database = process.env.DATABASE_URL || 'campeonatodb'
+var database = process.env.DATABASE_URL || process.env.DBNAME
 var sequelize = ""
 
 if (process.env.DATABASE_URL) {
