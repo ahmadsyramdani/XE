@@ -5,14 +5,12 @@ const path = require('path')
 const Sequelize = require('sequelize')
 const config = require('../config/config')
 
-//for HEROKU
 var database = process.env.DATABASE_URL || process.env.DBNAME
-var sequelize = ""
+var sequelize = ''
 
 if (process.env.DATABASE_URL) {
   sequelize = new Sequelize(database)
-}
-else {
+} else {
   sequelize = new Sequelize(config.postgres.database, config.postgres.username, config.postgres.password, config.postgres)
 }
 
