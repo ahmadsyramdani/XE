@@ -1,11 +1,12 @@
 import { FETCH_PRODUCTS } from './types';
+import { BASE_API } from '../global';
 
 export const fetchProducts = (page, category='') => (dispatch) => {
   const currentPage = page || 1
   const params = category ?  `?pages=${currentPage}&categoryId=${category}` : `?pages=${currentPage}`
-  const baseApi = `http://localhost/api/products${params}`
+  const url = `${BASE_API}/api/products${params}`
 
-  fetch(baseApi).then(res => res.json())
+  fetch(url).then(res => res.json())
   .then(data => {
     return dispatch({
       type: FETCH_PRODUCTS,

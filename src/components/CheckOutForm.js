@@ -2,9 +2,10 @@ import React from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { Link } from 'react-router-dom';
 import util from '../util';
+import { BASE_API } from '../global';
 
 async function submitToServer (dataValue) {
-  const baseApi = `http://localhost/api/orders`;
+  const baseApi = `${BASE_API}/api/orders`;
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
