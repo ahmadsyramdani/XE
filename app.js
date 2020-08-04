@@ -13,7 +13,7 @@ const http = require('http')
 
 const app = express()
 
-app.use(bodyParser.json());
+app.use(bodyParser.json())
 
 if (process.env.NODE_ENV === 'development') {
   http.createServer(app).listen(process.env.PORT || 80, () => {

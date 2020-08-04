@@ -42,12 +42,17 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
+    "cross-env": "^7.0.2",
     "eslint": "^7.5.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "jest": "^26.2.2",
+    "nyc": "^15.1.0",
+    "pre-push": "^0.1.1",
+    "supertest": "^4.0.2",
     "typescript": "^3.9.7"
   },
   "scripts": {
@@ -56,11 +61,16 @@
     "debug": "node --inspect=127.0.0.1:9222 ./bin/www",
     "dev": "nodemon --watch ./ ./bin/www",
     "seed": "node ./seed/*.js",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --coverage --detectOpenHandles",
     "jslint": "./node_modules/.bin/eslint \"models/**/*.js\" \"routes/**/*.js\" \"helpers/**/*.js\" \"dao/**/*.js\" \"controller/**/*.js\" \"app.js\"",
     "jsfmt": "./node_modules/.bin/eslint \"models/**/*.js\" \"routes/**/*.js\" \"helpers/**/*.js\" \"dao/**/*.js\" \"controller/**/*.js\" \"app.js\" --fix",
     "githubtoken": "git config --global url.\"https://${TOKEN}:@github.com/\".insteadOf \"https://github.com/\"",
     "buildexe": "nexe bin/www -r \"./.sequelizerc\" -r \"./app.js\" -r \"./public/\" -r \"./models/\" -r \"./.env\" -r \"./views/\" -r \"./config/\" --verbose"
   },
+  "pre-push": [
+    "test",
+    "jslint"
+  ],
   "engines": {
     "node": "10.16.0"
   },

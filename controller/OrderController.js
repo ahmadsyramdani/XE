@@ -27,7 +27,7 @@ const create = async (req, res) => {
           quantity: orderItem.quantity
         })
 
-        const product = await Product.findOne({ id: orderItem.productId })
+        const product = await Product.findOne({ where: { id: orderItem.productId } })
         await product.update({
           stock: product.stock - orderItem.quantity
         })
@@ -47,7 +47,7 @@ const create = async (req, res) => {
     } else {
       return response(req, res, 500, null, 'Something went wrong..')
     }
-  } catch(error) {
+  } catch (error) {
     logger.error(JSON.stringify(error))
     response(req, res, 500, null, 'Something went wrong..', error)
   }
