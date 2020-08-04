@@ -1,10 +1,21 @@
 'use strict'
-
+require('dotenv').config()
 const fs = require('fs')
 const path = require('path')
 const Sequelize = require('sequelize')
 const config = require('../config/config')
-const sequelize = new Sequelize(config.postgres.database, config.postgres.username, config.postgres.password, config.postgres)
+
+//for HEROKU
+var database = process.env.DATABASE_URL || process.env.DBNAME
+var sequelize = ""
+
+if (process.env.DATABASE_URL) {
+  sequelize = new Sequelize(database)
+}
+else {
+  sequelize = new Sequelize(config.postgres.database, config.postgres.username, config.postgres.password, config.postgres)
+}
+
 const db = {}
 
 fs
