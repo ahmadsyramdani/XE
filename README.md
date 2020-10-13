@@ -1,5 +1,5 @@
 
-# Xen Electronic Shop
+# Simple Shop Using Reacjs and Nodejs
 
 Simple eCommerce
 
